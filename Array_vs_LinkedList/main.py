@@ -26,7 +26,7 @@ class LinkedList:
         basic_node: 기본적으로 세팅된 노드 정보
         datas: 넣고자 하는 데이터 정보
         index: 중간에 노드 삽입 필요 시 적용 옵션(기본 마지막에 노드 추가)
-        exist: 중간에 노드 추가 시 적용 옵션으로 뒤에 있는 노드 정보 가져오기 위한 옵션
+        exist: 중간에 노드 추가 시 적용 옵션(default:False-제일 뒤에 노드 추가)
         '''
         now_node = basic_node
         # 중간 삽입을 위한 로직
