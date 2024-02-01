@@ -27,7 +27,8 @@ func Quick(arr []int, standard int) []int {
 		}
 	}
 
-	return append(append(Quick(arrSorted["left"], standard), arrSorted["middle"]...), Quick(arrSorted["right"], standard)...)
+	return append(append(Quick(arrSorted["left"], standard), arrSorted["middle"]...),
+		Quick(arrSorted["right"], standard)...)
 }
 
 func TestQuickSort(t *testing.T) {

@@ -7,7 +7,7 @@ import java.util.LinkedList;
  따라서 별도의 포인터를 사용하여 구성 할 필요 없이 아래와 같이 간단하게 예제 실행하면 가능
 
  */
-public class Linked_list {
+public class Linked {
     public static void main(String[] args) {
         LinkedList<String> linkedList = new LinkedList<>();
 
