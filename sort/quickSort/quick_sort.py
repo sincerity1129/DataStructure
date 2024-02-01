@@ -1,40 +1,30 @@
-import numpy as np
-
-class Quicksort:
-    @classmethod
-    def _partition(cls, arr, standard):
-        if len(arr)<=1:
-            return 0
-        
-        # 기준점
-        pivot = arr[standard]
-        prev=1
-        last=len(arr)-1
-                
-        while True:
-            while prev < len(arr) and arr[prev] <= pivot:
-                prev += 1
-            while last > 0 and arr[last] > pivot:
-                last -= 1
-            if prev >= last:
-                arr[standard], arr[last] = arr[last], arr[standard]
-                return last
-            arr[prev], arr[last] = arr[last], arr[prev]
-            
-            
-    @classmethod
-    def set_quick_sort(cls, arr, standard=0):
-        if len(arr)<=1:
-            return
-        
-        idx = cls._partition(arr, standard)
-        cls.set_quick_sort(arr[:idx])
-        cls.set_quick_sort(arr[idx+1:])
-        
+import random
+from collections import defaultdict
+def quick_sort(arr, standard):
+    if len(arr) <= 1:
         return arr
+    
+    if standard !=0 or len(arr)>standard:
+        standard=0
+        
+    pivot = arr[standard]
+    arr_sorted =defaultdict(list)
+    for x in arr:
+        if x < pivot:
+            arr_sorted["left"].append(x)
+        elif x == pivot:
+            arr_sorted["middle"].append(x)
+        elif x> pivot:
+            arr_sorted["right"].append(x)
+    return quick_sort(arr_sorted["left"],standard) + arr_sorted["middle"] + quick_sort(arr_sorted["right"],standard)
+
         
 if __name__=="__main__":
-    arr = np.random.randint(1, 101, 100)
-    print(f"before: {arr}")
-    arr = Quicksort.set_quick_sort(arr, 10)
-    print(f"after: {arr}")
+    # 테스트
+    original_list = [random.randint(1, 100) for _ in range(100)]
+    sorted_list = quick_sort(original_list, 10)
+
+    if sorted(original_list)==sorted_list:
+        print("쿽 정렬이 정상적으로 완료되었습니다.")
+    else:
+        print("알고리즘을 확인해 주세요.")
