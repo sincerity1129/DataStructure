@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Count {
 
-    public static int[] SortCount(int[] arr) {
+    public static int[] SetSortCount(int[] arr) {
         int maxValue = arr[0];
         for (int value : arr) {
             if (maxValue<value) {
@@ -42,7 +42,7 @@ public class Count {
             originalList[i] = randomNumber;
         }
 
-        int[] result = SortCount(originalList);
+        int[] result = SetSortCount(originalList);
         System.out.println(Arrays.toString(originalList));
         System.out.println(Arrays.toString(result));
     }

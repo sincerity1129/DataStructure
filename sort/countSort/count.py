@@ -24,7 +24,7 @@ def set_counting_sort(arr):
 
 if __name__ == "__main__":
     # 예제 사용
-    original_list = [random.randint(1, 100) for _ in range(100)]
+    original_list = [random.randint(0, 100) for _ in range(100)]
     sorted_list = set_counting_sort(original_list)
 
     print("입력 배열:", original_list)

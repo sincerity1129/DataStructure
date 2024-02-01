@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Quick(arr []int, standard int) []int {
+func SetQuick(arr []int, standard int) []int {
 	if len(arr) <= 1 {
 		return arr
 	}
@@ -27,8 +27,8 @@ func Quick(arr []int, standard int) []int {
 		}
 	}
 
-	return append(append(Quick(arrSorted["left"], standard), arrSorted["middle"]...),
-		Quick(arrSorted["right"], standard)...)
+	return append(append(SetQuick(arrSorted["left"], standard), arrSorted["middle"]...),
+		SetQuick(arrSorted["right"], standard)...)
 }
 
 func TestQuickSort(t *testing.T) {
@@ -38,6 +38,6 @@ func TestQuickSort(t *testing.T) {
 		randomNum := rand.Intn(100)
 		original_list[i] = randomNum
 	}
-	result := Quick(original_list, 10)
+	result := SetQuick(original_list, 10)
 	t.Log(result)
 }

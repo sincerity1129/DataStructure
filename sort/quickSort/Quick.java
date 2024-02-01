@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Quick {
 
-    public static ArrayList<Integer> quickSort(ArrayList<Integer> arr, int standard) {
+    public static ArrayList<Integer> setQuickSort(ArrayList<Integer> arr, int standard) {
         if (arr.size() <= 1) {
             return arr;
         }
@@ -36,9 +36,9 @@ public class Quick {
         }
 
         ArrayList<Integer> result = new ArrayList<>();
-        result.addAll(quickSort(arrSorted.get("left"), standard));
+        result.addAll(setQuickSort(arrSorted.get("left"), standard));
         result.addAll(arrSorted.get("middle"));
-        result.addAll(quickSort(arrSorted.get("right"), standard));
+        result.addAll(setQuickSort(arrSorted.get("right"), standard));
 
         return result;
     }
@@ -52,7 +52,7 @@ public class Quick {
             int randomNumber = random.nextInt(100) + 1; // 1부터 100까지의 난수 생성
             originalList.add(randomNumber);
         }
-        ArrayList<Integer> resultList = quickSort(originalList, 10);
+        ArrayList<Integer> resultList = setQuickSort(originalList, 10);
         Collections.sort(originalList);
         if (originalList.equals(resultList)){
             System.out.println("쿽 정렬이 정상적으로 완료되었습니다.");

@@ -21,7 +21,7 @@ def quick_sort(arr, standard):
         
 if __name__=="__main__":
     # 테스트
-    original_list = [random.randint(1, 100) for _ in range(100)]
+    original_list = [random.randint(0, 100) for _ in range(100)]
     sorted_list = quick_sort(original_list, 10)
 
     if sorted(original_list)==sorted_list:
