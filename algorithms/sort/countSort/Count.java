@@ -1,8 +1,6 @@
-package basic_algorithms.sort.countSort;
+package algorithms.sort.countSort;
 
 import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Count {

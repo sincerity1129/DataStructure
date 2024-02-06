@@ -1,4 +1,4 @@
-package basic_algorithms.sort.bubbleSort;
+package algorithms.sort.bubbleSort;
 
 import java.util.Random;
 import java.util.Arrays;
