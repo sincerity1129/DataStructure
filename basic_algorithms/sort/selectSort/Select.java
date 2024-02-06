@@ -1,4 +1,4 @@
-package sort.selectSort;
+package basic_algorithms.sort.selectSort;
 
 import java.util.Random;
 import java.util.Arrays;

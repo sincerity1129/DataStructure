@@ -1,4 +1,4 @@
-package sort.countSort;
+package basic_algorithms.sort.countSort;
 
 import java.util.Arrays;
 import java.util.ArrayList;

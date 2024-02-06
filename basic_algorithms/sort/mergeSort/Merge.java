@@ -1,4 +1,4 @@
-package sort.mergeSort;
+package basic_algorithms.sort.mergeSort;
 
 import java.util.Random;
 import java.util.Arrays;
