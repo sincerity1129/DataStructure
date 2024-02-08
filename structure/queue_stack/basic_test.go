@@ -2,68 +2,63 @@ package queuestack_test
 
 import (
 	"container/list"
-	"fmt"
 	"testing"
 )
 
-type Stack []int
+type Stack struct {
+	items []interface{}
+}
 
 type Queue struct {
-	list *list.List
+	items *list.List
 }
 
-func (s *Stack) Push(value int) {
-	*s = append(*s, value)
+func (s *Stack) Push(item interface{}) {
+	s.items = append(s.items, item)
 }
 
-func (s *Stack) Pop() int {
-	if len(*s) == 0 {
-		panic("Stack is empty")
+func (s *Stack) Pop() interface{} {
+	if len(s.items) == 0 {
+		return nil
 	}
-	value := (*s)[len(*s)-1]
-	*s = (*s)[:len(*s)-1]
-	return value
+	item := s.items[len(s.items)-1]
+	s.items = s.items[:len(s.items)-1]
+	return item
 }
 
-func NewQueue() *Queue {
-	return &Queue{list: list.New()}
+func (q *Queue) Enqueue(item interface{}) {
+	q.items.PushBack(item)
 }
 
-func (q *Queue) Push(value int) {
-	q.list.PushBack(value)
-}
-
-func (q *Queue) Pop() int {
-	if q.list.Len() == 0 {
-		panic("Queue is empty")
+func (q *Queue) Dequeue() interface{} {
+	if q.items.Len() == 0 {
+		return nil
 	}
-	elem := q.list.Front()
-	q.list.Remove(elem)
-	return elem.Value.(int)
+	item := q.items.Front()
+	q.items.Remove(item)
+	return item.Value
 }
 
 func TestQueueStack(t *testing.T) {
-	stack := make(Stack, 0)
+	stack := Stack{}
+	stack.Push("a")
+	stack.Push("b")
+	stack.Push("c")
+	stackItem := stack.Pop()
+	t.Log("Stack Pop Item: ", stackItem)
+	t.Log("Stack Items: ", stack.items)
 
-	stack.Push(1)
-	stack.Push(2)
-	stack.Push(3)
+	queue := Queue{items: list.New()}
+	t.Log("Basic Queue Items: ", queue.items)
+	queue.Enqueue("a")
+	queue.Enqueue("b")
+	queue.Enqueue("c")
+	queue.Enqueue("d")
+	queueItem := queue.Dequeue()
+	t.Log("Queue Pop Item: ", queueItem)
 
-	fmt.Println("-------stack--------")
-	for len(stack) > 0 {
-		value := stack.Pop()
-		fmt.Println(value) // 출력: 3, 2, 1
+	for i := queue.items.Front(); i != nil; i = i.Next() {
+		t.Log("queueItem:", i.Value)
 	}
 
-	queue := NewQueue()
-
-	queue.Push(1)
-	queue.Push(2)
-	queue.Push(3)
-
-	fmt.Println("-------queue--------")
-	for queue.list.Len() > 0 {
-		value := queue.Pop()
-		fmt.Println(value) // 출력: 1, 2, 3
-	}
 }

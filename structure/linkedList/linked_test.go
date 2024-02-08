@@ -1,6 +1,8 @@
-package arrayvslinkedlist
+package linkedlist_test
 
-import "fmt"
+import (
+	"testing"
+)
 
 // LinkedList 구조를 go는 가지고 있지 않음
 // 이와 같은 방식을 활용해서 만들 수 있음
@@ -67,7 +69,7 @@ func DelteLinkedList(basicNode *Node[any], index *int) *Node[any] {
 	return basicNode
 }
 
-func main() {
+func TestLinked(t *testing.T) {
 	// 구조 설명 -> {UserName, PreUser, val}
 	// Pointer 지속적으로 nil를 통해 계속 다음 포인터를 잡아서 넣어줌
 	// basic에서 Pointer nil은 basic.Pointer 통해 값을 채워주는 방식
@@ -87,5 +89,5 @@ func main() {
 
 	// 중간에 노드 삭제
 	result = DelteLinkedList(basic, &index)
-	fmt.Println(result)
+	t.Log(result)
 }
